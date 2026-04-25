@@ -3,9 +3,8 @@ import { fileURLToPath } from "url";
 import path from "path";
 import connectDB from "./src/db/database.js";
 import dotenv from "dotenv";
-dotenv.config(); // carga las variables desde .env
+dotenv.config();
 
-//rutas
 import homeRoutes from "./src/routes/home.routes.js";
 import postRoutes from "./src/routes/post.routes.js";
 
@@ -16,16 +15,14 @@ const __dirname = path.dirname(__filename);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "src","views"));
 
-// Middlewares
-app.use(express.urlencoded({ extended: true })); // Para leer datos de formularios
-app.use(express.json()); // Para leer JSON
-app.use(express.static(path.join(__dirname,"src", "public"))); // Archivos estáticos (css, js, imgs)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname,"src", "public")));
 
-// Rutas
 app.use("/", homeRoutes);
 app.use("/posts", postRoutes);
 
-connectDB(); //Conexión a la base de datos
+connectDB();
 
 const PORT = process.env.PORT || 3000;
 

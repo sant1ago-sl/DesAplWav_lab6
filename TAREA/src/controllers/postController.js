@@ -2,7 +2,6 @@ import postService from "../services/postService.js";
 import userRepository from "../repositories/userRepository.js";
 
 class PostController {
-    // Para API
     async create(req, res) {
         try {
             const { userId } = req.params;
@@ -13,7 +12,6 @@ class PostController {
         }
     }
 
-    // Web CRUD - Leer todos
     async getAll(req, res) {
         try {
             const posts = await postService.getPosts();
@@ -23,7 +21,6 @@ class PostController {
         }
     }
 
-    // Web CRUD - Mostrar formulario de crear
     async renderNewForm(req, res) {
         try {
             const users = await userRepository.findAll();
@@ -33,7 +30,6 @@ class PostController {
         }
     }
 
-    // Web CRUD - Guardar nuevo post
     async createFromWeb(req, res) {
         try {
             const { title, content, user, imageUrl, hashtags } = req.body;
@@ -45,7 +41,6 @@ class PostController {
         }
     }
 
-    // Web CRUD - Mostrar formulario de editar
     async renderEditForm(req, res) {
         try {
             const post = await postService.getPostById(req.params.id);
@@ -56,7 +51,6 @@ class PostController {
         }
     }
 
-    // Web CRUD - Actualizar post
     async updateFromWeb(req, res) {
         try {
             const { title, content, imageUrl, hashtags } = req.body;
@@ -68,7 +62,6 @@ class PostController {
         }
     }
 
-    // Web CRUD - Eliminar post
     async deleteFromWeb(req, res) {
         try {
             await postService.deletePost(req.params.id);

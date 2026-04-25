@@ -15,7 +15,7 @@ class PostController {
         try {
             const posts = await postService.getPosts();
             console.log(posts);
-            res.render("posts", { posts }); // Renderiza la vista posts/index.ejs
+            res.render("posts", { posts });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

@@ -5,7 +5,6 @@ import connectDB from "./src/db/database.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-// Rutas
 import homeRoutes from "./src/routes/home.routes.js";
 import postRoutes from "./src/routes/post.routes.js";
 
